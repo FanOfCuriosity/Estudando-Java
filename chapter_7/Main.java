@@ -35,6 +35,10 @@ public class Main {
             bookCount++;
 
             System.out.println("Novo livro registrado com sucesso.");
+        } else if (option == 2) {
+            for (int count = 0; count <= bookCount; count++) {
+                books[count].showInformation();
+            }
         }
     }
 }
