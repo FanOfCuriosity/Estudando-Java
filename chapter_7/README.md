@@ -1,5 +1,5 @@
 # 📚 Library Management System Challenge
-## Attention: This exercise is made by ChatGPT
+## Attention: The problem statement for this exercise was written by ChatGPT.
 
 > A comprehensive Java challenge focused on practicing Object-Oriented Programming, control flow, arrays, `ArrayList`, matrices, and algorithm implementation **without using concepts beyond Chapter 7 of _Big Java_**.
 
