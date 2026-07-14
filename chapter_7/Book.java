@@ -21,10 +21,20 @@ public class Book {
     public void borrow() {
         if (available) {
             this.available = false;
+            this.borrowCount++;
             System.out.println("Livro emprestado. Boa leitura!");
         } else {
             System.out.println("Lamento, livro já está em empréstimo.");
         }
     }
 
+    public void returnBook() {
+        // If available is false—meaning the book is on loan—the condition will be triggered by its negation, becoming true only if the value is false.
+        if (!available) {
+            this.available = true;
+            System.out.println("Livro devolvido. Muito obrigado!");
+        } else {
+            System.out.println("Lamento, o livro já está devolvido.");
+        }
+    }
 }
