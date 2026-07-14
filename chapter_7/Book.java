@@ -67,4 +67,8 @@ public class Book {
     public double getRating() {
         return this.rating;
     }
+
+    public String getTitle() {
+        return this.title;
+    }
 }
