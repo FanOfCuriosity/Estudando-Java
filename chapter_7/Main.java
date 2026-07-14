@@ -39,6 +39,17 @@ public class Main {
             for (int count = 0; count <= bookCount; count++) {
                 books[count].showInformation();
             }
+        } else if (option == 3) {
+            System.out.print("Informe o título: ");
+            String title = consoleInput.nextLine();
+
+            for (int count = 0; count <= bookCount; count++) {
+                if (books[count].getTitle().equals(title)) {
+                    books[count].borrow();
+                } else {
+                    System.out.println("Livro inexistente");
+                }
+            }
         }
     }
 }
