@@ -46,4 +46,15 @@ public class Book {
             System.out.println("A avaliação não pode ser maior que 10 ou negativa.");
         }
     }
+
+    public void showInformation() {
+        String status = (this.available) ? "Disponível" : "Indisponível";
+        System.out.printf("==================================================================\n");
+        System.out.printf("Título: %s\n", this.title);
+        System.out.printf("Autor: %s\n", this.author);
+        System.out.printf("ISBN: %s\n", this.isbn);
+        System.out.printf("Disponibilidade: %s\n", status);
+        System.out.printf("Quantidade de empréstimos: %d\n", this.borrowCount);
+        System.out.printf("Avaliação: %.2f/10\n", this.rating);
+    }
 }
