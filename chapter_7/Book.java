@@ -57,4 +57,16 @@ public class Book {
         System.out.printf("Quantidade de empréstimos: %d\n", this.borrowCount);
         System.out.printf("Avaliação: %.2f/10\n", this.rating);
     }
+
+    public boolean isAvailable() {
+        return this.available;
+    }
+
+    public int getBorrowCount() {
+        return this.borrowCount;
+    }
+
+    public double getRating() {
+        return this.rating;
+    }
 }
