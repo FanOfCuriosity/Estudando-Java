@@ -42,13 +42,17 @@ public class Main {
         } else if (option == 3) {
             System.out.print("Informe o título: ");
             String title = consoleInput.nextLine();
+            boolean bookFound = false;
 
             for (int count = 0; count <= bookCount; count++) {
                 if (books[count].getTitle().equals(title)) {
                     books[count].borrow();
-                } else {
-                    System.out.println("Livro inexistente");
+                    bookFound = true;
                 }
+            }
+
+            if (bookFound == false) {
+                System.out.println("Livro inexistente");
             }
         }
     }
