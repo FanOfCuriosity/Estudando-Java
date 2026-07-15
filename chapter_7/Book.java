@@ -39,7 +39,7 @@ public class Book {
     public void rate(double score) {
         if (score >= 0 && score <= 10) {
             this.rating = score;
-            System.out.println();
+            System.out.println("Avaliação registrada com sucesso!");
         } else {
             System.out.println("A avaliação não pode ser maior que 10 ou negativa.");
         }
