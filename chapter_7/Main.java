@@ -72,7 +72,7 @@ public class Main {
             if (bookFound == false) {
                 System.out.println("Livro inexistente");
             }
-            
+
         } else if (option == 5) {
             System.out.print("Informe o título: ");
             String title = consoleInput.nextLine();
@@ -85,6 +85,22 @@ public class Main {
             for (int count = 0; count <= bookCount; count++) {
                 if (books[count].getTitle().equals(title)) {
                     books[count].rate(score);
+                    bookFound = true;
+                }
+            }
+
+            if (bookFound == false) {
+                System.out.println("Livro inexistente");
+            }
+        } else if (option == 6) {
+            System.out.print("Informe o título: ");
+            String title = consoleInput.nextLine();
+
+            boolean bookFound = false;
+
+            for (int count = 0; count <= bookCount; count++) {
+                if (books[count].getTitle().equals(title)) {
+                    books[count].showInformation();
                     bookFound = true;
                 }
             }
