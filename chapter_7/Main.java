@@ -19,6 +19,9 @@ public class Main {
             System.out.println("7 - Estatísticas");
             System.out.println("8 - Matriz de empréstimos");
             System.out.println("9 - Sair");
+
+            System.out.print("Opção: ");
+            option = consoleInput.nextInt();
         }
 
         if (option == 1) {
@@ -62,6 +65,26 @@ public class Main {
             for (int count = 0; count <= bookCount; count++) {
                 if (books[count].getTitle().equals(title)) {
                     books[count].returnBook();
+                    bookFound = true;
+                }
+            }
+
+            if (bookFound == false) {
+                System.out.println("Livro inexistente");
+            }
+            
+        } else if (option == 5) {
+            System.out.print("Informe o título: ");
+            String title = consoleInput.nextLine();
+
+            System.out.print("Informe a avaliação: ");
+            double score = consoleInput.nextDouble();
+
+            boolean bookFound = false;
+
+            for (int count = 0; count <= bookCount; count++) {
+                if (books[count].getTitle().equals(title)) {
+                    books[count].rate(score);
                     bookFound = true;
                 }
             }
