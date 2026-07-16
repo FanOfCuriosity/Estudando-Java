@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -48,7 +49,7 @@ public class Main {
             boolean bookFound = false;
 
             for (int count = 0; count <= bookCount; count++) {
-                if (books[count].getTitle().equals(title)) {
+                if (books[count].getTitle().equalsIgnoreCase(title)) {
                     books[count].borrow();
                     bookFound = true;
                 }
@@ -63,7 +64,7 @@ public class Main {
             boolean bookFound = false;
 
             for (int count = 0; count <= bookCount; count++) {
-                if (books[count].getTitle().equals(title)) {
+                if (books[count].getTitle().equalsIgnoreCase(title)) {
                     books[count].returnBook();
                     bookFound = true;
                 }
@@ -83,7 +84,7 @@ public class Main {
             boolean bookFound = false;
 
             for (int count = 0; count <= bookCount; count++) {
-                if (books[count].getTitle().equals(title)) {
+                if (books[count].getTitle().equalsIgnoreCase(title)) {
                     books[count].rate(score);
                     bookFound = true;
                 }
@@ -99,7 +100,7 @@ public class Main {
             boolean bookFound = false;
 
             for (int count = 0; count <= bookCount; count++) {
-                if (books[count].getTitle().equals(title)) {
+                if (books[count].getTitle().equalsIgnoreCase(title)) {
                     books[count].showInformation();
                     bookFound = true;
                 }
@@ -108,6 +109,26 @@ public class Main {
             if (bookFound == false) {
                 System.out.println("Livro inexistente");
             }
+        } else if (option == 7) {
+            int borrowedBookSum = 0;
+            for (Book individualBook : books) {
+                borrowedBookSum += individualBook.getBorrowCount();
+            }
+
+            int availableBookSum = 0;
+            for (Book individualBook : books) {
+                if (individualBook.isAvailable()) {
+                    availableBookSum += 1;
+                }
+            }
+
+            double averageBookRating = 0;
+            for (Book individualBook : books) {
+                averageBookRating = Math.max(averageBookRating, individualBook.getRating());
+            }
+
+            System.out.println("====================================================");
+            System.out.printf("Total de livros registrados: %d\n", bookCount);
         }
     }
 }
