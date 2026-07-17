@@ -127,6 +127,17 @@ public class Main {
                 averageBookRating = Math.max(averageBookRating, individualBook.getRating());
             }
 
+            int mostBorrowedBook = 0;
+            ArrayList<String> mostBorrowedBooksTitle = new ArrayList<String>();
+            for (Book individualBook : books) {
+                mostBorrowedBook = Math.max(mostBorrowedBook, individualBook.getBorrowCount());
+            }
+            for (Book individualBook : books) {
+                if (individualBook.getBorrowCount() == mostBorrowedBook) {
+                    mostBorrowedBooksTitle.add(individualBook.getTitle());
+                }
+            }
+
             System.out.println("====================================================");
             System.out.printf("Total de livros registrados: %d\n", bookCount);
         }
