@@ -355,42 +355,6 @@ To keep the challenge aligned with the knowledge covered up to **Chapter 7**, **
 
 ---
 
-# ⭐ Bonus Challenges
-
-Implement one or more of the following features without using concepts beyond Chapter 7.
-
-## 1. Remove a Book
-
-Remove a book from the array by shifting every subsequent element one position to the left.
-
-Update `bookCount` accordingly.
-
----
-
-## 2. Top 5 Most Borrowed Books
-
-Display the five books with the highest number of loans.
-
-Do **not** use any sorting library.
-
-Implement your own algorithm.
-
----
-
-## 3. Final Report
-
-Before terminating the application, generate a report containing:
-
-- Total registered books
-- Total loans
-- Total available books
-- Average rating
-- Most borrowed book
-- Highest-rated book
-- Complete operation history
-
----
-
 # 📌 Learning Goals
 
 By completing this project, you should demonstrate proficiency in:

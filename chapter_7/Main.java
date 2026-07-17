@@ -23,123 +23,149 @@ public class Main {
 
             System.out.print("Opção: ");
             option = consoleInput.nextInt();
-        }
 
-        if (option == 1) {
-            System.out.print("Informe o título: ");
-            String title = consoleInput.nextLine();
-            
-            System.out.print("Informe o autor: ");
-            String author = consoleInput.nextLine();
-
-            System.out.print("Informe o ISBN: ");
-            String isbn = consoleInput.nextLine();
-
-            books[bookCount] = new Book(title, author, isbn);
-            bookCount++;
-
-            System.out.println("Novo livro registrado com sucesso.");
-        } else if (option == 2) {
-            for (int count = 0; count <= bookCount; count++) {
-                books[count].showInformation();
-            }
-        } else if (option == 3) {
-            System.out.print("Informe o título: ");
-            String title = consoleInput.nextLine();
-            boolean bookFound = false;
-
-            for (int count = 0; count <= bookCount; count++) {
-                if (books[count].getTitle().equalsIgnoreCase(title)) {
-                    books[count].borrow();
-                    bookFound = true;
-                }
-            }
-
-            if (bookFound == false) {
-                System.out.println("Livro inexistente");
-            }
-        } else if (option == 4) {
-            System.out.print("Informe o título: ");
-            String title = consoleInput.nextLine();
-            boolean bookFound = false;
-
-            for (int count = 0; count <= bookCount; count++) {
-                if (books[count].getTitle().equalsIgnoreCase(title)) {
-                    books[count].returnBook();
-                    bookFound = true;
-                }
-            }
-
-            if (bookFound == false) {
-                System.out.println("Livro inexistente");
-            }
-
-        } else if (option == 5) {
-            System.out.print("Informe o título: ");
-            String title = consoleInput.nextLine();
-
-            System.out.print("Informe a avaliação: ");
-            double score = consoleInput.nextDouble();
-
-            boolean bookFound = false;
-
-            for (int count = 0; count <= bookCount; count++) {
-                if (books[count].getTitle().equalsIgnoreCase(title)) {
-                    books[count].rate(score);
-                    bookFound = true;
-                }
-            }
-
-            if (bookFound == false) {
-                System.out.println("Livro inexistente");
-            }
-        } else if (option == 6) {
-            System.out.print("Informe o título: ");
-            String title = consoleInput.nextLine();
-
-            boolean bookFound = false;
-
-            for (int count = 0; count <= bookCount; count++) {
-                if (books[count].getTitle().equalsIgnoreCase(title)) {
+            if (option == 1) {
+                System.out.print("Informe o título: ");
+                String title = consoleInput.nextLine();
+                
+                System.out.print("\nInforme o autor: ");
+                String author = consoleInput.nextLine();
+    
+                System.out.print("Informe o ISBN: ");
+                String isbn = consoleInput.nextLine();
+    
+                books[bookCount] = new Book(title, author, isbn);
+                bookCount++;
+    
+                System.out.println("Novo livro registrado com sucesso.");
+            } else if (option == 2) {
+                for (int count = 0; count <= bookCount; count++) {
                     books[count].showInformation();
-                    bookFound = true;
                 }
-            }
-
-            if (bookFound == false) {
-                System.out.println("Livro inexistente");
-            }
-        } else if (option == 7) {
-            int borrowedBookSum = 0;
-            for (Book individualBook : books) {
-                borrowedBookSum += individualBook.getBorrowCount();
-            }
-
-            int availableBookSum = 0;
-            for (Book individualBook : books) {
-                if (individualBook.isAvailable()) {
-                    availableBookSum += 1;
+            } else if (option == 3) {
+                System.out.print("Informe o título: ");
+                String title = consoleInput.nextLine();
+                boolean bookFound = false;
+    
+                for (int count = 0; count <= bookCount; count++) {
+                    if (books[count].getTitle().equalsIgnoreCase(title)) {
+                        books[count].borrow();
+                        bookFound = true;
+                    }
                 }
-            }
-
-            double averageBookRating = 0;
-            for (Book individualBook : books) {
-                averageBookRating = Math.max(averageBookRating, individualBook.getRating());
-            }
-
-            int mostBorrowedBook = 0;
-            ArrayList<String> mostBorrowedBooksTitle = new ArrayList<String>();
-            for (Book individualBook : books) {
-                mostBorrowedBook = Math.max(mostBorrowedBook, individualBook.getBorrowCount());
-            }
-            for (Book individualBook : books) {
-                if (individualBook.getBorrowCount() == mostBorrowedBook) {
-                    mostBorrowedBooksTitle.add(individualBook.getTitle());
+    
+                if (bookFound == false) {
+                    System.out.println("Livro inexistente");
                 }
+            } else if (option == 4) {
+                System.out.print("Informe o título: ");
+                String title = consoleInput.nextLine();
+                boolean bookFound = false;
+    
+                for (int count = 0; count <= bookCount; count++) {
+                    if (books[count].getTitle().equalsIgnoreCase(title)) {
+                        books[count].returnBook();
+                        bookFound = true;
+                    }
+                }
+    
+                if (bookFound == false) {
+                    System.out.println("Livro inexistente");
+                }
+    
+            } else if (option == 5) {
+                System.out.print("Informe o título: ");
+                String title = consoleInput.nextLine();
+    
+                System.out.print("Informe a avaliação: ");
+                double score = consoleInput.nextDouble();
+    
+                boolean bookFound = false;
+    
+                for (int count = 0; count <= bookCount; count++) {
+                    if (books[count].getTitle().equalsIgnoreCase(title)) {
+                        books[count].rate(score);
+                        bookFound = true;
+                    }
+                }
+    
+                if (bookFound == false) {
+                    System.out.println("Livro inexistente");
+                }
+            } else if (option == 6) {
+                System.out.print("Informe o título: ");
+                String title = consoleInput.nextLine();
+    
+                boolean bookFound = false;
+    
+                for (int count = 0; count <= bookCount; count++) {
+                    if (books[count].getTitle().equalsIgnoreCase(title)) {
+                        books[count].showInformation();
+                        bookFound = true;
+                    }
+                }
+    
+                if (bookFound == false) {
+                    System.out.println("Livro inexistente");
+                }
+            } else if (option == 7) {
+                int borrowedBookSum = 0;
+                for (Book individualBook : books) {
+                    borrowedBookSum += individualBook.getBorrowCount();
+                }
+    
+                int availableBookSum = 0;
+                for (Book individualBook : books) {
+                    if (individualBook.isAvailable()) {
+                        availableBookSum += 1;
+                    }
+                }
+    
+                double averageBookRating = 0;
+                for (Book individualBook : books) {
+                    averageBookRating += individualBook.getBorrowCount();
+                }
+                averageBookRating = averageBookRating / bookCount;
+    
+                int mostBorrowedBook = 0;
+                String mostBorrowedBookTitle = new String();
+                for (Book individualBook : books) {
+                    mostBorrowedBook = Math.max(mostBorrowedBook, individualBook.getBorrowCount());
+                }
+                for (Book individualBook : books) {
+                    if (individualBook.getBorrowCount() == mostBorrowedBook) {
+                        mostBorrowedBookTitle = individualBook.getTitle();
+                    }
+                }
+    
+                double highestBookRanking = 0;
+                double lowestBookRanking = 0;
+                ArrayList<String> highestBookRankingTitles = new ArrayList<String>();
+                ArrayList<String> lowestBookRankingTitles = new ArrayList<String>();
+                for (Book individualBook : books) {
+                    highestBookRanking = Math.max(highestBookRanking, individualBook.getRating());
+                    lowestBookRanking = Math.min(lowestBookRanking, individualBook.getRating());
+                }
+    
+                for (Book individualBook : books) {
+                    if (highestBookRanking == individualBook.getRating()) {
+                        highestBookRankingTitles.add(individualBook.getTitle());
+                    } else if (lowestBookRanking == individualBook.getRating()) {
+                        lowestBookRankingTitles.add(individualBook.getTitle());
+                    }
+                }
+                
+    
+                System.out.println("====================================================");
+                System.out.printf("Total de livros registrados: %d\n", bookCount);
+                System.out.printf("Total de livros emprestados: %d\n", borrowedBookSum);
+                System.out.printf("Total de livros disponíveis: %d\n", availableBookSum);
+                System.out.printf("Média de avaliação: %.2f\n", averageBookRating);
+                System.out.print("Livro(s) mais avaliado(s): ");
+                highestBookRankingTitles.forEach(book -> System.out.print(book + " "));
+                System.out.print("Livro(s) menos avaliado(s): ");
+                lowestBookRankingTitles.forEach(book -> System.out.print(book + " "));
             }
-
-            System.out.println("====================================================");
-            System.out.printf("Total de livros registrados: %d\n", bookCount);
         }
     }
 }
