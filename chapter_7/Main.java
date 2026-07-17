@@ -23,31 +23,33 @@ public class Main {
 
             System.out.print("Opção: ");
             option = consoleInput.nextInt();
-
+            
             if (option == 1) {
+                consoleInput.nextLine();
                 System.out.print("Informe o título: ");
                 String title = consoleInput.nextLine();
                 
-                System.out.print("\nInforme o autor: ");
+                System.out.print("Informe o autor: ");
                 String author = consoleInput.nextLine();
-    
                 System.out.print("Informe o ISBN: ");
                 String isbn = consoleInput.nextLine();
-    
+
                 books[bookCount] = new Book(title, author, isbn);
                 bookCount++;
     
-                System.out.println("Novo livro registrado com sucesso.");
+                System.out.println("\nNovo livro registrado com sucesso.");
             } else if (option == 2) {
-                for (int count = 0; count <= bookCount; count++) {
+                for (int count = 0; count < bookCount; count++) {
                     books[count].showInformation();
                 }
             } else if (option == 3) {
+                consoleInput.nextLine();
                 System.out.print("Informe o título: ");
                 String title = consoleInput.nextLine();
+                System.out.println(title);
                 boolean bookFound = false;
     
-                for (int count = 0; count <= bookCount; count++) {
+                for (int count = 0; count < bookCount; count++) {
                     if (books[count].getTitle().equalsIgnoreCase(title)) {
                         books[count].borrow();
                         bookFound = true;
@@ -62,7 +64,7 @@ public class Main {
                 String title = consoleInput.nextLine();
                 boolean bookFound = false;
     
-                for (int count = 0; count <= bookCount; count++) {
+                for (int count = 0; count < bookCount; count++) {
                     if (books[count].getTitle().equalsIgnoreCase(title)) {
                         books[count].returnBook();
                         bookFound = true;
@@ -82,7 +84,7 @@ public class Main {
     
                 boolean bookFound = false;
     
-                for (int count = 0; count <= bookCount; count++) {
+                for (int count = 0; count < bookCount; count++) {
                     if (books[count].getTitle().equalsIgnoreCase(title)) {
                         books[count].rate(score);
                         bookFound = true;
@@ -98,7 +100,7 @@ public class Main {
     
                 boolean bookFound = false;
     
-                for (int count = 0; count <= bookCount; count++) {
+                for (int count = 0; count < bookCount; count++) {
                     if (books[count].getTitle().equalsIgnoreCase(title)) {
                         books[count].showInformation();
                         bookFound = true;
