@@ -7,7 +7,8 @@ public class Main {
 
         Book[] books = new Book[100];
         int bookCount = 0;
-        
+        int[][] loans = new int[12][31];
+
         int option = 0;
         while (!(option == 9)) {
             System.out.println("=========================================================");
@@ -48,7 +49,13 @@ public class Main {
                 String title = consoleInput.nextLine();
                 System.out.println(title);
                 boolean bookFound = false;
-    
+
+                System.out.print("Mês do empréstimo: ");
+                int month = consoleInput.nextInt();
+                System.out.print("Dia do empréstimo: ");
+                int day = consoleInput.nextInt();
+                loans[month - 1][day - 1] += 1;
+
                 for (int count = 0; count < bookCount; count++) {
                     if (books[count].getTitle().equalsIgnoreCase(title)) {
                         books[count].borrow();
@@ -126,11 +133,11 @@ public class Main {
                     }
                 }
     
-                double averageBookRating = 0;
+                double bookRatingSum = 0;
                 for (int count = 0; count < bookCount; count++) {
-                    averageBookRating += books[count].getBorrowCount();
+                    bookRatingSum += books[count].getRating();
                 }
-                averageBookRating = averageBookRating / bookCount;
+                double averageBookRating = bookRatingSum / bookCount;
     
                 int mostBorrowedBook = 0;
                 String mostBorrowedBookTitle = new String();
@@ -171,6 +178,13 @@ public class Main {
                 System.out.print("\nLivro(s) menos avaliado(s): ");
                 lowestBookRankingTitles.forEach(book -> System.out.print(book + " "));
                 System.out.println();
+            } else if (option == 8) {
+                for (int i = 0; i < loans.length; i++) {
+                    for (int j = 0; j < loans[i].length; j++) {
+                        System.out.print(loans[i][j] + " ");
+                    }
+                    System.out.println();
+                }
             }
         }
     }
