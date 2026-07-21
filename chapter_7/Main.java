@@ -7,7 +7,8 @@ public class Main {
 
         Book[] books = new Book[100];
         int bookCount = 0;
-        
+        int[][] loans = new int[12][31];
+
         int option = 0;
         while (!(option == 9)) {
             System.out.println("=========================================================");
@@ -48,7 +49,13 @@ public class Main {
                 String title = consoleInput.nextLine();
                 System.out.println(title);
                 boolean bookFound = false;
-    
+
+                System.out.print("Mês do empréstimo: ");
+                int month = consoleInput.nextInt();
+                System.out.print("Dia do empréstimo: ");
+                int day = consoleInput.nextInt();
+                loans[month - 1][day - 1] += 1;
+
                 for (int count = 0; count < bookCount; count++) {
                     if (books[count].getTitle().equalsIgnoreCase(title)) {
                         books[count].borrow();
@@ -60,6 +67,7 @@ public class Main {
                     System.out.println("Livro inexistente");
                 }
             } else if (option == 4) {
+                consoleInput.nextLine();
                 System.out.print("Informe o título: ");
                 String title = consoleInput.nextLine();
                 boolean bookFound = false;
@@ -76,6 +84,7 @@ public class Main {
                 }
     
             } else if (option == 5) {
+                consoleInput.nextLine();
                 System.out.print("Informe o título: ");
                 String title = consoleInput.nextLine();
     
@@ -95,6 +104,7 @@ public class Main {
                     System.out.println("Livro inexistente");
                 }
             } else if (option == 6) {
+                consoleInput.nextLine();
                 System.out.print("Informe o título: ");
                 String title = consoleInput.nextLine();
     
@@ -112,31 +122,31 @@ public class Main {
                 }
             } else if (option == 7) {
                 int borrowedBookSum = 0;
-                for (Book individualBook : books) {
-                    borrowedBookSum += individualBook.getBorrowCount();
+                for (int count = 0; count < bookCount; count++) {
+                    borrowedBookSum += books[count].getBorrowCount();
                 }
     
                 int availableBookSum = 0;
-                for (Book individualBook : books) {
-                    if (individualBook.isAvailable()) {
+                for (int count = 0; count < bookCount; count++) {
+                    if (books[count].isAvailable()) {
                         availableBookSum += 1;
                     }
                 }
     
-                double averageBookRating = 0;
-                for (Book individualBook : books) {
-                    averageBookRating += individualBook.getBorrowCount();
+                double bookRatingSum = 0;
+                for (int count = 0; count < bookCount; count++) {
+                    bookRatingSum += books[count].getRating();
                 }
-                averageBookRating = averageBookRating / bookCount;
+                double averageBookRating = bookRatingSum / bookCount;
     
                 int mostBorrowedBook = 0;
                 String mostBorrowedBookTitle = new String();
-                for (Book individualBook : books) {
-                    mostBorrowedBook = Math.max(mostBorrowedBook, individualBook.getBorrowCount());
+                for (int count = 0; count < bookCount; count++) {
+                    mostBorrowedBook = Math.max(mostBorrowedBook, books[count].getBorrowCount());
                 }
-                for (Book individualBook : books) {
-                    if (individualBook.getBorrowCount() == mostBorrowedBook) {
-                        mostBorrowedBookTitle = individualBook.getTitle();
+                for (int count = 0; count < bookCount; count++) {
+                    if (books[count].getBorrowCount() == mostBorrowedBook) {
+                        mostBorrowedBookTitle = books[count].getTitle();
                     }
                 }
     
@@ -144,16 +154,16 @@ public class Main {
                 double lowestBookRanking = 0;
                 ArrayList<String> highestBookRankingTitles = new ArrayList<String>();
                 ArrayList<String> lowestBookRankingTitles = new ArrayList<String>();
-                for (Book individualBook : books) {
-                    highestBookRanking = Math.max(highestBookRanking, individualBook.getRating());
-                    lowestBookRanking = Math.min(lowestBookRanking, individualBook.getRating());
+                for (int count = 0; count < bookCount; count++) {
+                    highestBookRanking = Math.max(highestBookRanking, books[count].getRating());
+                    lowestBookRanking = Math.min(lowestBookRanking, books[count].getRating());
                 }
     
-                for (Book individualBook : books) {
-                    if (highestBookRanking == individualBook.getRating()) {
-                        highestBookRankingTitles.add(individualBook.getTitle());
-                    } else if (lowestBookRanking == individualBook.getRating()) {
-                        lowestBookRankingTitles.add(individualBook.getTitle());
+                for (int count = 0; count < bookCount; count++) {
+                    if (highestBookRanking == books[count].getRating()) {
+                        highestBookRankingTitles.add(books[count].getTitle());
+                    } else if (lowestBookRanking == books[count].getRating()) {
+                        lowestBookRankingTitles.add(books[count].getTitle());
                     }
                 }
                 
@@ -165,8 +175,16 @@ public class Main {
                 System.out.printf("Média de avaliação: %.2f\n", averageBookRating);
                 System.out.print("Livro(s) mais avaliado(s): ");
                 highestBookRankingTitles.forEach(book -> System.out.print(book + " "));
-                System.out.print("Livro(s) menos avaliado(s): ");
+                System.out.print("\nLivro(s) menos avaliado(s): ");
                 lowestBookRankingTitles.forEach(book -> System.out.print(book + " "));
+                System.out.println();
+            } else if (option == 8) {
+                for (int i = 0; i < loans.length; i++) {
+                    for (int j = 0; j < loans[i].length; j++) {
+                        System.out.print(loans[i][j] + " ");
+                    }
+                    System.out.println();
+                }
             }
         }
     }
