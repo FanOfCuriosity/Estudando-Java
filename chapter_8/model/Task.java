@@ -73,6 +73,10 @@ public class Task {
         return this.description;
     }
 
+    public int getPriority() {
+        return this.priority;
+    }
+
     public static int getTotalTasksCreated() {
         return totalTasksCreated;
     }
