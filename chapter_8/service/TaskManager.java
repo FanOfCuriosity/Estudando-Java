@@ -5,6 +5,7 @@ import java.util.Scanner;
 import chapter_8.model.Task;
 
 public class TaskManager {
+
     private ArrayList<Task> tasks;
     private ArrayList<String> history;
     private Scanner consoleInput;
@@ -15,7 +16,7 @@ public class TaskManager {
         this.tasks = new ArrayList<Task>();
         this.consoleInput = new Scanner(System.in);
         this.productivity = new int[12][31];
-
+        this.history = new ArrayList<String>();
     }
 
     public void addTask() {
@@ -35,6 +36,7 @@ public class TaskManager {
         Task task = new Task(title, description, priority);
         tasks.add(task);
         System.out.println("Task added");
+        history.add("[INFO] Task \"" + title + "\" created.");
     }
 
     public boolean removeTask() {
@@ -47,7 +49,7 @@ public class TaskManager {
             if (task.getTitle().equals(title)) {
                 tasks.remove(task);
                 status = true;
-                
+                history.add("[INFO] Task \"" + task.getTitle() + "\" removed");
             }
         }
         return status;
@@ -80,6 +82,7 @@ public class TaskManager {
                     task.editTitle(newTitle);
                     task.editDescription(newDescription);
                     task.editPriority(newPriority);
+                    this.history.add("[INFO] Task \"" + title + "\" edited to \"" + newTitle + "\"");
                 }
             }
         } else {
@@ -118,6 +121,7 @@ public class TaskManager {
             if (task.getTitle().equals(title)) {
                 task.complete();
                 status = true;
+                this.history.add("[INFO] Task \"" + title + "\" completed");
             }
         }
         return status;
@@ -133,6 +137,7 @@ public class TaskManager {
             if (task.getTitle().equalsIgnoreCase(title)) {
                 task.reopen();
                 status = true;
+                this.history.add("[INFO] Task \"" + title + "\" completed");
             }
         }
         return status;
@@ -211,5 +216,9 @@ public class TaskManager {
                 System.out.print(this.productivity[i][j] + " ");
             }
         }
+    }
+
+    public void showHistory() {
+        this.history.forEach(log -> System.out.println(log));
     }
 }
