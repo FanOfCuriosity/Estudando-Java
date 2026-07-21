@@ -18,7 +18,7 @@ public class Task {
             System.out.println("ERRO: Descrição vazia");
 
         } else if (priority < 1 || priority > 3) {
-            System.out.println("ERRO: Opção de prioriedade inexistente");
+            System.out.println("ERRO: Opção de prioridade inexistente");
         
         } else {
             this.title = title;
@@ -71,5 +71,9 @@ public class Task {
 
     public String getDescription() {
         return this.description;
+    }
+
+    public static int getTotalTasksCreated() {
+        return totalTasksCreated;
     }
 }
