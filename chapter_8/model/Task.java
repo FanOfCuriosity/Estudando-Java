@@ -10,6 +10,7 @@ public class Task {
     private static int totalTasksCreated;
 
     public Task(String title, String description, int priority) {
+        this.creationDate = java.time.LocalDate.now().toString();
         if (title.isEmpty()) {
             System.out.println("ERRO: Título vazio");
 
@@ -24,9 +25,51 @@ public class Task {
             this.description = description;
             this.priority = priority;
             this.completed = false;
-            this.creationDate = java.time.LocalDate.now().toString();
             totalTasksCreated++;
         }
+    }
 
+    public boolean complete() {
+        this.completed = true;
+        return true;
+    }
+    
+    public boolean reopen() {
+        this.completed = false;
+        return true;
+    }
+
+    public boolean editTitle(String newTitle) {
+        this.title = newTitle;
+        return true;
+    }
+
+    public boolean editDescription(String newDescription) {
+        this.description = newDescription;
+        return true;
+    }
+
+    public boolean editPriority(int newPriority) {
+        this.priority = newPriority;
+        return true;
+    }
+
+    public void show() {
+        System.out.printf("Title: %s\n", this.title);
+        System.out.printf("Description: %s\n", this.description);
+        System.out.printf("Priority: %d\n", this.priority);
+        System.out.printf("Status: %b\n", (this.completed) ? "Completed" : "Not completed");
+    }
+
+    public boolean isCompleted() {
+        return this.completed;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 }
