@@ -53,6 +53,40 @@ public class TaskManager {
         return status;
     }
 
+    public void editTask() {
+        this.consoleInput.nextLine();
+        System.out.print("Title: ");
+        String title = consoleInput.nextLine();
+        
+        boolean found = false;
+
+
+        for (Task task : tasks) {
+            if (task.getTitle().equalsIgnoreCase(title)) {
+                found = true;
+            }
+        }
+
+        if (found) {
+            System.out.print("New title: ");
+            String newTitle = consoleInput.nextLine();
+            System.out.print("New description: ");
+            String newDescription = consoleInput.nextLine();
+            System.out.print("New priority: ");
+            int newPriority = consoleInput.nextInt();
+            
+            for (Task task : tasks) {
+                if (task.getTitle().equalsIgnoreCase(title)) {
+                    task.editTitle(newTitle);
+                    task.editDescription(newDescription);
+                    task.editPriority(newPriority);
+                }
+            }
+        } else {
+            System.out.println("Book not found");
+        }
+    }
+
     public boolean searchTask() {
         this.consoleInput.nextLine();
         System.out.print("Title: ");
